@@ -19,4 +19,23 @@ describe("String Utils", () => {
 
   })
 
+  describe("getSumFromString edge cases", () => {
+    test("getSumFromString should return 0 for string with only one comma", () => {
+      expect(getSumFromString(",")).toBe(0);
+    })
+
+    test("getSumFromString should return 0 for string with multiple commas", () => {
+      expect(getSumFromString(",,,")).toBe(0);
+    })
+
+    test("getSumFromString should return sum for string with preceding comma", () => {
+      expect(getSumFromString(",1,2")).toBe(3);
+    })
+
+    test("getSumFromString should return sum for string with trailing comma", () => {
+      expect(getSumFromString("1,2,")).toBe(3);
+    })
+
+  })
+
 });
