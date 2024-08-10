@@ -62,4 +62,49 @@ describe("String Utils", () => {
 
   })
 
+  describe("getSumFromString different kind of delimiter (;,\n. ) separated numbers", () => {
+    
+    test("getSumFromString should return sum for string with dot delimiter", () => {
+      expect(getSumFromString("1.3.3")).toBe(7);
+    })
+    test("getSumFromString should return sum for string with semicolon delimiter", () => {
+      expect(getSumFromString("1;3;3")).toBe(7);
+    })
+    test("getSumFromString should return sum for string with comma and semicolon delimiter", () => {
+      expect(getSumFromString("1,3;3")).toBe(7);
+    })
+    test("getSumFromString should return sum for string with comma, semicolon and dot delimiter", () => {
+      expect(getSumFromString("1.3;3")).toBe(7);
+    })
+
+    test("getSumFromString should return sum for string with comma, semicolon, new line, space and dot delimiter", () => {
+      expect(getSumFromString("1.3;3\n8 9 10")).toBe(34);
+    })
+  })
+
+  describe("getSumFromString different kind of delimiter (;,\n. ) separated numbers edge cases", () => {
+   
+    test("getSumFromString should return 0 for string with dot delimiter without numbers", () => {
+      expect(getSumFromString(".")).toBe(0);
+    })
+    test("getSumFromString should return 0 for string with semicolon, dot and space delimiter without numbers", () => {
+      expect(getSumFromString(";. ")).toBe(0);
+    })
+    test("getSumFromString should return 0 for string with multiple dot delimiter without numbers", () => {
+      expect(getSumFromString("...")).toBe(0);
+    })
+    test("getSumFromString should return sum for string with extra suffixed  dot delimiter", () => {
+      expect(getSumFromString("1.3.3.")).toBe(10);
+    })
+    test("getSumFromString should return sum for string with extra prefixed  dot delimiter", () => {
+      expect(getSumFromString(".1.3.3")).toBe(7);
+    })
+    test("getSumFromString should return sum for string with extra prefixed  dot and space delimiter", () => {
+      expect(getSumFromString(" .1.3.3")).toBe(7);
+    })
+    test("getSumFromString should return sum for string with extra prefixed  dot, semicolon and space delimiter", () => {
+      expect(getSumFromString("; .1.3.3 ")).toBe(7);
+    })
+  })
+
 });
