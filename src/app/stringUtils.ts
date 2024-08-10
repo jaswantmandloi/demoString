@@ -6,8 +6,13 @@ export function getSumFromString(stringToBeParsed: string): number {
     if (numbers.length === 1) {
         return parseInt(numbers[0]);
     }
+
     const sum = numbers.reduce((acc, curr) => {
-        return acc + parseInt(curr);
+        const currNumber = parseInt(curr);
+        if (isNaN(currNumber)) {
+            return acc;
+        }
+        return acc + currNumber;
     }, 0);
     return sum;
 }
