@@ -17,6 +17,10 @@ describe("String Utils", () => {
       expect(getSumFromString("1,2")).toBe(3);
     })
 
+    test("getSumFromString should return sum of multi digit numbers in string", () => {
+      expect(getSumFromString("555,22")).toBe(577);
+    })
+
   })
 
   describe("getSumFromString edge cases", () => {
