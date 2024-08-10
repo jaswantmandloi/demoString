@@ -3,7 +3,7 @@ import { getSumFromString } from "@/app/stringUtils";
 
 describe("String Utils", () => {
 
-  describe("getSumFromString basic functionality", () => {
+  describe("getSumFromString comma separated numbers", () => {
 
     test("getSumFromString should return 0 for empty string", () => {
       expect(getSumFromString("")).toBe(0);
@@ -23,7 +23,7 @@ describe("String Utils", () => {
 
   })
 
-  describe("getSumFromString edge cases", () => {
+  describe("getSumFromString edge cases for the commas", () => {
     test("getSumFromString should return 0 for string with only one comma", () => {
       expect(getSumFromString(",")).toBe(0);
     })
@@ -38,6 +38,26 @@ describe("String Utils", () => {
 
     test("getSumFromString should return sum for string with trailing comma", () => {
       expect(getSumFromString("1,2,")).toBe(3);
+    })
+
+  })
+
+  describe("getSumFromString new line separated numbers", () => {
+    test("getSumFromString should return 0 for string with only new line", () => {
+      expect(getSumFromString("\n")).toBe(0);
+    })
+    test("getSumFromString should return sum for string with new line", () => {
+      expect(getSumFromString("1\n2")).toBe(3);
+    })
+    test("getSumFromString should return sum for string with new line and comma", () => {
+      expect(getSumFromString("1\n2,3")).toBe(6);
+    })
+    test("getSumFromString should return 0 for string with new line and comma", () => {
+      expect(getSumFromString("\n,")).toBe(0);
+    })
+
+    test("getSumFromString should return 0 for string with multiple new line and comma", () => {
+      expect(getSumFromString("\n\n,,")).toBe(0);
     })
 
   })
