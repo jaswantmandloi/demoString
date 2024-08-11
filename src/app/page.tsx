@@ -44,6 +44,7 @@ export default function Home() {
         </button>
       </div>
       <div data-testid="string-calculated-result">{result}</div>
+      <div></div>
     </main>
   );
 }
