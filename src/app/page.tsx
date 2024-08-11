@@ -1,11 +1,23 @@
 "use client";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, MouseEvent } from "react";
+import { getSumFromString } from "./stringUtils";
 
 export default function Home() {
   const [string, setString] = useState("");
+  const [result, setResult] = useState("");
 
   function handleSetString(e: ChangeEvent<HTMLInputElement>): void {
     setString(e.target.value);
+  }
+
+  function handleClickCalculateButton(e: MouseEvent<HTMLButtonElement>): void {
+    try {
+      const sum = getSumFromString(string);
+      setResult(String(sum));
+    } catch (error) {
+      const err = error as Error;
+      setResult(err.message);
+    }
   }
 
   return (
@@ -24,9 +36,14 @@ export default function Home() {
           placeholder="Enter string with separator ; or ,"
           onChange={handleSetString}
         />
-        <button data-testid="string-calculate-btn">Get Sum</button>
+        <button
+          data-testid="string-calculate-btn"
+          onClick={handleClickCalculateButton}
+        >
+          Get Sum
+        </button>
       </div>
-      <div data-testid="string-calculated-result"></div>
+      <div data-testid="string-calculated-result">{result}</div>
     </main>
   );
 }
