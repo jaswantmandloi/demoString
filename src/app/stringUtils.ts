@@ -3,14 +3,22 @@ export function getSumFromString(stringToBeParsed: string): number {
         return 0;
     }
     
-    const numbers = stringToBeParsed.match(/\d+/g) || []
-    console.log({numbers})
+    const stringNumbers = stringToBeParsed.match(/-?\d+/g) || []
+    const numbers = stringNumbers.map(Number)
+    const negativeNumbers =  numbers.filter(number => number < 0)
+    const hasNegativeNumbers = negativeNumbers.length > 0
+
+    if(hasNegativeNumbers) {
+        throw new Error(`negative numbers not allowed ${negativeNumbers.join(', ')}`)
+    }
+
+    
     if (numbers.length === 1) {
-        return parseInt(numbers[0]);
+        return numbers[0];
     }
 
     const sum = numbers.reduce((acc, curr) => {
-        const currNumber = parseInt(curr);
+        const currNumber = curr;
         if (isNaN(currNumber)) {
             return acc;
         }

@@ -89,8 +89,8 @@ describe("String Utils", () => {
       expect(getSumFromString("//,\n4,26")).toBe(30);
     })
 
-    test.only(`Calling getSumFromString with a negative number will throw an exception: "negative numbers not allowed <negative_number>".  `, () => {
-      expect(getSumFromString("//,\n-4,-26")).toThrow("negative numbers not allowed -4, -26");
+    test(`Calling getSumFromString with a negative number will throw an exception: "negative numbers not allowed <negative_number>".  `, () => {
+      expect(() => getSumFromString("//,\n-4,-26")).toThrow("negative numbers not allowed -4, -26");
     })
 
   })
