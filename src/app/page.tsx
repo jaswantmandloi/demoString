@@ -20,10 +20,11 @@ export default function Home() {
           type="text"
           name="string"
           value={string}
+          data-testid="string-input"
           placeholder="Enter string with separator ; or ,"
           onChange={handleSetString}
         />
-        <button>Get Sum</button>
+        <button data-testid="string-calculate-btn">Get Sum</button>
       </div>
       <div></div>
     </main>
