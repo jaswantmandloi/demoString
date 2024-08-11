@@ -80,6 +80,19 @@ describe("String Utils", () => {
     test("getSumFromString should return sum for string with comma, semicolon, new line, space and dot delimiter", () => {
       expect(getSumFromString("1.3;3\n8 9 10")).toBe(34);
     })
+
+    test(`getSumFromString should return sum for string "//;\n1;2" where the delimiter is ";"  `, () => {
+      expect(getSumFromString("//;\n1;2")).toBe(3);
+    })
+
+    test(`getSumFromString should return sum for string "//,\n4,26" where the delimiter is ","  `, () => {
+      expect(getSumFromString("//,\n4,26")).toBe(30);
+    })
+
+    test.only(`Calling getSumFromString with a negative number will throw an exception: "negative numbers not allowed <negative_number>".  `, () => {
+      expect(getSumFromString("//,\n-4,-26")).toThrow("negative numbers not allowed -4, -26");
+    })
+
   })
 
   describe("getSumFromString different kind of delimiter (;,\n. ) separated numbers edge cases", () => {
@@ -105,6 +118,8 @@ describe("String Utils", () => {
     test("getSumFromString should return sum for string with extra prefixed  dot, semicolon and space delimiter", () => {
       expect(getSumFromString("; .1.3.3 ")).toBe(7);
     })
+
+    
   })
 
 });
