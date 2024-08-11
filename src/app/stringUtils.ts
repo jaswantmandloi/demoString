@@ -2,8 +2,9 @@ export function getSumFromString(stringToBeParsed: string): number {
     if (stringToBeParsed.length === 0) {
         return 0;
     }
-    const commaMappedStringFromNewLines = stringToBeParsed.replaceAll("\n", ",");
-    const numbers = commaMappedStringFromNewLines.split(",");
+    
+    const numbers = stringToBeParsed.match(/\d+/g) || []
+    console.log({numbers})
     if (numbers.length === 1) {
         return parseInt(numbers[0]);
     }
@@ -17,3 +18,4 @@ export function getSumFromString(stringToBeParsed: string): number {
     }, 0);
     return sum;
 }
+

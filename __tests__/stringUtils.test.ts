@@ -94,7 +94,7 @@ describe("String Utils", () => {
       expect(getSumFromString("...")).toBe(0);
     })
     test("getSumFromString should return sum for string with extra suffixed  dot delimiter", () => {
-      expect(getSumFromString("1.3.3.")).toBe(10);
+      expect(getSumFromString("1.3.3.")).toBe(7);
     })
     test("getSumFromString should return sum for string with extra prefixed  dot delimiter", () => {
       expect(getSumFromString(".1.3.3")).toBe(7);
