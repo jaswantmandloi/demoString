@@ -26,7 +26,7 @@ export default function Home() {
         />
         <button data-testid="string-calculate-btn">Get Sum</button>
       </div>
-      <div></div>
+      <div data-testid="string-calculated-result"></div>
     </main>
   );
 }
